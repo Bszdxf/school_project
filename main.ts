@@ -77,7 +77,7 @@ input.onButtonPressed(Button.A, function () {
             set_change += 1
             basic.showNumber(set_change)
         } else {
-            set_change = 1
+            set_change = 0
             basic.showNumber(set_change)
         }
     }
@@ -202,9 +202,9 @@ input.onButtonPressed(Button.AB, function () {
     } else if (setting == 8) {
         ex_set_change = set_change
         setting = 9
-        set_change = 1
+        set_change = 0
     } else if (setting == 9) {
-        sch[ex_set_change] = set_change
+        sch[ex_set_change - 1] = set_change
         ex_set_change = 0
         set_change = 0
         setting = 0
@@ -270,7 +270,7 @@ input.onButtonPressed(Button.B, function () {
         }
     }
     if (setting == 9) {
-        if (set_change >= 2) {
+        if (set_change >= 1) {
             set_change += -1
             basic.showNumber(set_change)
         } else {
