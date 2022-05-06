@@ -1,28 +1,3 @@
-/**
- * 국어-1
- * 
- * 수학-2
- * 
- * 사회-3
- * 
- * 과학-4
- * 
- * 영어-5
- * 
- * 역사-6
- * 
- * 체육-7
- * 
- * 일어-8
- * 
- * 음악-9
- * 
- * 기가-10
- * 
- * 미술-11
- * 
- * 그외-12
- */
 input.onButtonPressed(Button.A, function () {
     if (setting == 1) {
         setting = 2
@@ -173,6 +148,31 @@ function schedule () {
         ]
     }
 }
+/**
+ * 국어-1
+ * 
+ * 수학-2
+ * 
+ * 사회-3
+ * 
+ * 과학-4
+ * 
+ * 영어-5
+ * 
+ * 역사-6
+ * 
+ * 체육-7
+ * 
+ * 일어-8
+ * 
+ * 음악-9
+ * 
+ * 기가-10
+ * 
+ * 미술-11
+ * 
+ * 그외-12
+ */
 input.onButtonPressed(Button.AB, function () {
     if (setting == 0) {
         setting = 1
@@ -184,6 +184,7 @@ input.onButtonPressed(Button.AB, function () {
         date = set_change
         setting = 4
         set_change = 0
+        schedule()
         basic.showNumber(set_change)
     } else if (setting == 4) {
         hour = set_change
