@@ -1,3 +1,28 @@
+/**
+ * 국어-1
+ * 
+ * 수학-2
+ * 
+ * 사회-3
+ * 
+ * 과학-4
+ * 
+ * 영어-5
+ * 
+ * 역사-6
+ * 
+ * 체육-7
+ * 
+ * 일어-8
+ * 
+ * 음악-9
+ * 
+ * 기가-10
+ * 
+ * 미술-11
+ * 
+ * 그외-12
+ */
 input.onButtonPressed(Button.A, function () {
     if (setting == 1) {
         setting = 2
@@ -148,31 +173,6 @@ function schedule () {
         ]
     }
 }
-/**
- * 국어-1
- * 
- * 수학-2
- * 
- * 사회-3
- * 
- * 과학-4
- * 
- * 영어-5
- * 
- * 역사-6
- * 
- * 체육-7
- * 
- * 일어-8
- * 
- * 음악-9
- * 
- * 기가-10
- * 
- * 미술-11
- * 
- * 그외-12
- */
 input.onButtonPressed(Button.AB, function () {
     if (setting == 0) {
         setting = 1
