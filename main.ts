@@ -1,31 +1,37 @@
-/**
- * 국어-1
- * 
- * 수학-2
- * 
- * 사회-3
- * 
- * 과학-4
- * 
- * 영어-5
- * 
- * 역사-6
- * 
- * 체육-7
- * 
- * 일어-8
- * 
- * 음악-9
- * 
- * 기가-10
- * 
- * 미술-11
- * 
- * 그외-12
- */
+function light_off () {
+    pins.digitalWritePin(DigitalPin.P0, 0)
+    pins.digitalWritePin(DigitalPin.P1, 0)
+    pins.digitalWritePin(DigitalPin.P2, 0)
+    pins.digitalWritePin(DigitalPin.P3, 0)
+    pins.digitalWritePin(DigitalPin.P4, 0)
+    pins.digitalWritePin(DigitalPin.P5, 0)
+    pins.digitalWritePin(DigitalPin.P6, 0)
+    pins.digitalWritePin(DigitalPin.P7, 0)
+    pins.digitalWritePin(DigitalPin.P8, 0)
+    pins.digitalWritePin(DigitalPin.P9, 0)
+    pins.digitalWritePin(DigitalPin.P10, 0)
+    pins.digitalWritePin(DigitalPin.P11, 0)
+}
 input.onButtonPressed(Button.A, function () {
     if (setting == 1) {
         setting = 2
+        basic.showLeds(`
+            # # # # #
+            . . # . .
+            . . # . .
+            . . # . .
+            . . # . .
+            `)
+    }
+    if (setting == 7) {
+        setting = 2
+        basic.showLeds(`
+            # # # # #
+            . . # . .
+            . . # . .
+            . . # . .
+            . . # . .
+            `)
     }
     if (setting == 3) {
         if (set_change <= 4) {
@@ -73,12 +79,12 @@ input.onButtonPressed(Button.A, function () {
         }
     }
     if (setting == 9) {
-        if (set_change <= 11) {
-            set_change += 1
-            basic.showNumber(set_change)
+        if (now <= 11) {
+            now += 1
+            light2()
         } else {
-            set_change = 0
-            basic.showNumber(set_change)
+            now = 0
+            light2()
         }
     }
 })
@@ -172,10 +178,34 @@ function schedule () {
         0
         ]
     }
+    if (6 == date) {
+        sch = [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+        ]
+    }
+    if (6 == date) {
+        sch = [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+        ]
+    }
 }
 input.onButtonPressed(Button.AB, function () {
     if (setting == 0) {
         setting = 1
+        light_off()
+        basic.showIcon(IconNames.Yes)
     } else if (setting == 2) {
         setting = 3
         set_change = 1
@@ -204,8 +234,11 @@ input.onButtonPressed(Button.AB, function () {
         ex_set_change = set_change
         setting = 9
         set_change = 0
+        prev_now = now
     } else if (setting == 9) {
-        sch[ex_set_change - 1] = set_change
+        sch[ex_set_change - 1] = now
+        now = prev_now
+        light2()
         ex_set_change = 0
         set_change = 0
         setting = 0
@@ -224,6 +257,23 @@ input.onButtonPressed(Button.AB, function () {
 input.onButtonPressed(Button.B, function () {
     if (setting == 1) {
         setting = 7
+        basic.showLeds(`
+            . # # # #
+            # . . . .
+            . # # # .
+            . . . . #
+            # # # # .
+            `)
+    }
+    if (setting == 2) {
+        setting = 7
+        basic.showLeds(`
+            . # # # #
+            # . . . .
+            . # # # .
+            . . . . #
+            # # # # .
+            `)
     }
     if (setting == 3) {
         if (set_change >= 2) {
@@ -271,44 +321,82 @@ input.onButtonPressed(Button.B, function () {
         }
     }
     if (setting == 9) {
-        if (set_change >= 1) {
-            set_change += -1
-            basic.showNumber(set_change)
+        if (now >= 1) {
+            now += -1
+            light2()
         } else {
-            set_change = 12
-            basic.showNumber(set_change)
+            now = 12
+            light2()
         }
     }
 })
 function light2 () {
     if (now == 1) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P1, 1)
     } else if (now == 2) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P11, 1)
     } else if (now == 3) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P7, 1)
     } else if (now == 4) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P8, 1)
     } else if (now == 5) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P4, 1)
     } else if (now == 6) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P3, 1)
     } else if (now == 7) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P2, 1)
     } else if (now == 8) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P9, 1)
     } else if (now == 9) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P6, 1)
     } else if (now == 10) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P10, 1)
     } else if (now == 11) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P5, 1)
     } else if (now == 12) {
-        basic.showNumber(now)
+        light_off()
+        pins.digitalWritePin(DigitalPin.P0, 1)
     } else {
-        basic.clearScreen()
+        light_off()
     }
 }
+/**
+ * 국어-1
+ * 
+ * 수학-2
+ * 
+ * 사회-3
+ * 
+ * 과학-4
+ * 
+ * 영어-5
+ * 
+ * 역사-6
+ * 
+ * 체육-7
+ * 
+ * 일어-8
+ * 
+ * 음악-9
+ * 
+ * 기가-10
+ * 
+ * 미술-11
+ * 
+ * 그외-12
+ */
+let prev_now = 0
 let ex_set_change = 0
 let sch: number[] = []
 let setting = 0
@@ -328,16 +416,18 @@ schedule()
 basic.forever(function () {
     basic.pause(1000)
     sec += 1
-    pres_con()
-    if (60 <= sec) {
+    if (setting == 0) {
+        pres_con()
+    }
+    if (60 < sec) {
         min += 1
         sec = 0
     }
-    if (60 <= min) {
+    if (60 < min) {
         hour += 1
         min = 0
     }
-    if (24 <= hour) {
+    if (24 < hour) {
         date += 1
         hour = 0
         schedule()
