@@ -414,25 +414,25 @@ set_change = 0
 setting = 0
 schedule()
 basic.forever(function () {
-    basic.pause(1000)
-    sec += 1
     if (setting == 0) {
+        basic.pause(1000)
+        sec += 1
         pres_con()
-    }
-    if (60 < sec) {
-        min += 1
-        sec = 0
-    }
-    if (60 < min) {
-        hour += 1
-        min = 0
-    }
-    if (24 < hour) {
-        date += 1
-        hour = 0
-        schedule()
-    }
-    if (7 < date) {
-        date = 1
+        if (60 < sec) {
+            min += 1
+            sec = 0
+        }
+        if (60 < min) {
+            hour += 1
+            min = 0
+        }
+        if (24 < hour) {
+            date += 1
+            hour = 0
+            schedule()
+        }
+        if (7 < date) {
+            date = 1
+        }
     }
 })
